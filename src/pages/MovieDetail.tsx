@@ -1,22 +1,12 @@
-import React from 'react';
+
+import React, { createContext, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Movie } from '../types/Movie';
 
-interface Movie {
-  id: string;
-  rank: number;
-  title: string;
-  description: string;
-  image: string;
-  big_image: string;
-  genre: string[];
-  thumbnail: string;
-  rating: string;
-  year: number;
-  imdbid: string;
-  imdb_link: string;
-}
+// This will be populated by the parent app with real movie data
+const MovieContext = createContext<Movie[]>([]);
 
-// Mock data - in a real app, this would come from props or context
+// Mock data as fallback - matches the API structure
 const mockMovies: Movie[] = [
   {
     id: "top1",
@@ -59,18 +49,41 @@ const mockMovies: Movie[] = [
     year: 2008,
     imdbid: "tt0468569",
     imdb_link: "https://www.imdb.com/title/tt0468569/"
+  },
+  {
+    id: "top6",
+    rank: 6,
+    title: "Schindler's List",
+    description: "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+    image: "https://images.unsplash.com/photo-1518621012118-1d2cc6b3d305?w=400&h=600&fit=crop",
+    big_image: "https://images.unsplash.com/photo-1518621012118-1d2cc6b3d305?w=800&h=1200&fit=crop",
+    genre: ["Biography", "Drama", "History"],
+    thumbnail: "https://images.unsplash.com/photo-1518621012118-1d2cc6b3d305?w=200&h=300&fit=crop",
+    rating: "9.0",
+    year: 1993,
+    imdbid: "tt0108052",
+    imdb_link: "https://www.imdb.com/title/tt0108052/"
   }
 ];
 
 const MovieDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const movie = mockMovies.find(m => m.id === id);
+  const contextMovies = useContext(MovieContext);
+  
+  // Use context movies if available, otherwise fall back to mock data
+  const movies = contextMovies.length > 0 ? contextMovies : mockMovies;
+  const movie = movies.find(m => m.id === id);
+
+  console.log('MovieDetail - Looking for movie with id:', id);
+  console.log('MovieDetail - Available movies:', movies.map(m => ({ id: m.id, title: m.title })));
+  console.log('MovieDetail - Found movie:', movie);
 
   if (!movie) {
     return (
       <div className="min-h-screen bg-dark text-white d-flex align-items-center justify-content-center">
         <div className="text-center">
           <h1>Movie Not Found</h1>
+          <p>Could not find movie with ID: {id}</p>
           <Link to="/" className="btn btn-primary mt-3">Back to Movies</Link>
         </div>
       </div>

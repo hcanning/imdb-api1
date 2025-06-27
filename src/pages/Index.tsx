@@ -1,28 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import { MovieCard } from '../components/MovieCard';
 import { Pagination } from '../components/Pagination';
 import { LoadingSpinner } from '../components/LoadingSpinner';
+import { Movie } from '../types/Movie';
 
-interface Movie {
-  id: number;
-  rank: number;
-  title: string;
-  description: string;
-  image: string;
-  big_image: string;
-  genre: string[];
-  thumbnail: string;
-  rating: string;
-  year: number;
-  imdbid: string;
-  imdb_link: string;
-}
-
-// Mock data to demonstrate the app functionality
+// Mock data to demonstrate the app functionality - now using string IDs
 const mockMovies: Movie[] = [
   {
-    id: 1,
+    id: "top1",
     rank: 1,
     title: "The Shawshank Redemption",
     description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
@@ -36,7 +21,7 @@ const mockMovies: Movie[] = [
     imdb_link: "https://www.imdb.com/title/tt0111161/"
   },
   {
-    id: 2,
+    id: "top2",
     rank: 2,
     title: "The Godfather",
     description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
@@ -50,7 +35,7 @@ const mockMovies: Movie[] = [
     imdb_link: "https://www.imdb.com/title/tt0068646/"
   },
   {
-    id: 3,
+    id: "top3",
     rank: 3,
     title: "The Dark Knight",
     description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",

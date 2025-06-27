@@ -1,13 +1,7 @@
 
 import React from 'react';
 
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-}
-
-export const Pagination: React.FC<PaginationProps> = ({
+export const Pagination = ({
   currentPage,
   totalPages,
   onPageChange,
@@ -70,7 +64,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                     ? 'bg-primary border-primary text-white'
                     : 'bg-secondary border-secondary text-white'
                 }`}
-                onClick={() => onPageChange(page as number)}
+                onClick={() => onPageChange(page)}
               >
                 {page}
               </button>

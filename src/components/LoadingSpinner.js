@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-export const LoadingSpinner: React.FC = () => {
+export const LoadingSpinner = () => {
   return (
     <div className="min-h-screen bg-dark d-flex align-items-center justify-content-center">
       <div className="text-center">

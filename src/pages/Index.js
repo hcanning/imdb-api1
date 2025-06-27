@@ -3,13 +3,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { MovieCard } from '../components/MovieCard';
 import { Pagination } from '../components/Pagination';
 import { LoadingSpinner } from '../components/LoadingSpinner';
-import { Movie } from '../types/Movie';
 import { MovieContext } from '../App';
 
 const Index = () => {
   const { movies, setMovies } = useContext(MovieContext);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 12;
 
@@ -64,7 +63,7 @@ const Index = () => {
   const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
   const totalPages = Math.ceil(movies.length / moviesPerPage);
 
-  const handlePageChange = (pageNumber: number) => {
+  const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

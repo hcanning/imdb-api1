@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useContext } from 'react';
 import { MovieCard } from '../components/MovieCard';
 import { Pagination } from '../components/Pagination';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { Movie } from '../types/Movie';
+import { MovieContext } from '../App';
 
 // Mock data to demonstrate the app functionality - now using string IDs
 const mockMovies: Movie[] = [
@@ -51,7 +53,7 @@ const mockMovies: Movie[] = [
 ];
 
 const Index = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const { movies, setMovies } = useContext(MovieContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);

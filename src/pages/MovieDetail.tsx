@@ -1,10 +1,7 @@
-
-import React, { createContext, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Movie } from '../types/Movie';
-
-// This will be populated by the parent app with real movie data
-const MovieContext = createContext<Movie[]>([]);
+import { MovieContext } from '../App';
 
 // Mock data as fallback - matches the API structure
 const mockMovies: Movie[] = [
@@ -68,7 +65,7 @@ const mockMovies: Movie[] = [
 
 const MovieDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const contextMovies = useContext(MovieContext);
+  const { movies: contextMovies } = useContext(MovieContext);
   
   // Use context movies if available, otherwise fall back to mock data
   const movies = contextMovies.length > 0 ? contextMovies : mockMovies;

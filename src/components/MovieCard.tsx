@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface Movie {
-  id: number;
+  id: string;
   rank: number;
   title: string;
   description: string;

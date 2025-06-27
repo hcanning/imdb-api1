@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 interface Movie {
-  id: number;
+  id: string;
   rank: number;
   title: string;
   description: string;
@@ -20,7 +19,7 @@ interface Movie {
 // Mock data - in a real app, this would come from props or context
 const mockMovies: Movie[] = [
   {
-    id: 1,
+    id: "top1",
     rank: 1,
     title: "The Shawshank Redemption",
     description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
@@ -34,7 +33,7 @@ const mockMovies: Movie[] = [
     imdb_link: "https://www.imdb.com/title/tt0111161/"
   },
   {
-    id: 2,
+    id: "top2",
     rank: 2,
     title: "The Godfather",
     description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
@@ -48,7 +47,7 @@ const mockMovies: Movie[] = [
     imdb_link: "https://www.imdb.com/title/tt0068646/"
   },
   {
-    id: 3,
+    id: "top3",
     rank: 3,
     title: "The Dark Knight",
     description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
@@ -65,7 +64,7 @@ const mockMovies: Movie[] = [
 
 const MovieDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const movie = mockMovies.find(m => m.id === parseInt(id || '0'));
+  const movie = mockMovies.find(m => m.id === id);
 
   if (!movie) {
     return (

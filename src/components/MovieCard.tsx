@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface Movie {
   id: number;
@@ -56,14 +57,20 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
             : movie.description}
         </p>
         
-        <div className="mt-auto">
+        <div className="mt-auto d-flex gap-2">
+          <Link
+            to={`/movie/${movie.id}`}
+            className="btn btn-primary flex-fill"
+          >
+            View Details
+          </Link>
           <a
             href={movie.imdb_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-outline-primary w-100"
+            className="btn btn-outline-primary"
           >
-            View on IMDB
+            IMDB
           </a>
         </div>
       </div>

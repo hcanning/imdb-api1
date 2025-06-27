@@ -1,74 +1,13 @@
+
 import React, { useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Movie } from '../types/Movie';
 import { MovieContext } from '../App';
 
-// Mock data as fallback - matches the API structure
-const mockMovies: Movie[] = [
-  {
-    id: "top1",
-    rank: 1,
-    title: "The Shawshank Redemption",
-    description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-    image: "https://images.unsplash.com/photo-1489599160071-7a4f69eb5056?w=400&h=600&fit=crop",
-    big_image: "https://images.unsplash.com/photo-1489599160071-7a4f69eb5056?w=800&h=1200&fit=crop",
-    genre: ["Drama"],
-    thumbnail: "https://images.unsplash.com/photo-1489599160071-7a4f69eb5056?w=200&h=300&fit=crop",
-    rating: "9.3",
-    year: 1994,
-    imdbid: "tt0111161",
-    imdb_link: "https://www.imdb.com/title/tt0111161/"
-  },
-  {
-    id: "top2",
-    rank: 2,
-    title: "The Godfather",
-    description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-    image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
-    big_image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&h=1200&fit=crop",
-    genre: ["Crime", "Drama"],
-    thumbnail: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=200&h=300&fit=crop",
-    rating: "9.2",
-    year: 1972,
-    imdbid: "tt0068646",
-    imdb_link: "https://www.imdb.com/title/tt0068646/"
-  },
-  {
-    id: "top3",
-    rank: 3,
-    title: "The Dark Knight",
-    description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
-    image: "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=400&h=600&fit=crop",
-    big_image: "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=800&h=1200&fit=crop",
-    genre: ["Action", "Crime", "Drama"],
-    thumbnail: "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=200&h=300&fit=crop",
-    rating: "9.0",
-    year: 2008,
-    imdbid: "tt0468569",
-    imdb_link: "https://www.imdb.com/title/tt0468569/"
-  },
-  {
-    id: "top6",
-    rank: 6,
-    title: "Schindler's List",
-    description: "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
-    image: "https://images.unsplash.com/photo-1518621012118-1d2cc6b3d305?w=400&h=600&fit=crop",
-    big_image: "https://images.unsplash.com/photo-1518621012118-1d2cc6b3d305?w=800&h=1200&fit=crop",
-    genre: ["Biography", "Drama", "History"],
-    thumbnail: "https://images.unsplash.com/photo-1518621012118-1d2cc6b3d305?w=200&h=300&fit=crop",
-    rating: "9.0",
-    year: 1993,
-    imdbid: "tt0108052",
-    imdb_link: "https://www.imdb.com/title/tt0108052/"
-  }
-];
-
 const MovieDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const { movies: contextMovies } = useContext(MovieContext);
+  const { movies } = useContext(MovieContext);
   
-  // Use context movies if available, otherwise fall back to mock data
-  const movies = contextMovies.length > 0 ? contextMovies : mockMovies;
   const movie = movies.find(m => m.id === id);
 
   console.log('MovieDetail - Looking for movie with id:', id);

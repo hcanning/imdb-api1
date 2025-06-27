@@ -36,7 +36,7 @@ const Index = () => {
       const response = await fetch('https://imdb-top-100-movies.p.rapidapi.com/', {
         method: 'GET',
         headers: {
-          'X-RapidAPI-Key': 'YOUR_API_KEY_HERE',
+          'X-RapidAPI-Key': 'c840b10966msh0cb78fc662b7140p148a74jsn493910a799ac',
           'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
         }
       });

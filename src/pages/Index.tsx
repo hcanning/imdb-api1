@@ -5,7 +5,7 @@ import { LoadingSpinner } from '../components/LoadingSpinner';
 import { Movie } from '../types/Movie';
 import { MovieContext } from '../App';
 
-const Index = () => {
+const Index: React.FC = () => {
   const { movies, setMovies } = useContext(MovieContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,8 +26,7 @@ const Index = () => {
         {
           method: 'GET',
           headers: {
-            'X-RapidAPI-Key':
-              '0ce13e1121msh7256256e2437c18p1ed6d0jsndfb915691248',
+            'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPI_KEY,
             'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com',
           },
         }

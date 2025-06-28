@@ -5,7 +5,6 @@ import { componentTagger } from 'lovable-tagger';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/imdb-api1/',
   plugins: [react()],
   resolve: {
     alias: {

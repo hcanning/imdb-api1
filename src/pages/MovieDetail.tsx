@@ -1,10 +1,11 @@
 
 import React, { useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Movie } from '../types/Movie';
 import { MovieContext } from '../App';
 
 const MovieDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const { movies } = useContext(MovieContext);
   
   const movie = movies.find(m => m.id === id);

@@ -1,8 +1,13 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Movie } from '../types/Movie';
 
-export const MovieCard = ({ movie }) => {
+interface MovieCardProps {
+  movie: Movie;
+}
+
+export const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   return (
     <div className="card bg-secondary border-0 h-100 movie-card">
       <div className="position-relative overflow-hidden">

@@ -1,5 +1,5 @@
 # USAGE
-DEMO: [https://hcann1-imdb-api1.pages.dev/
+DEMO: https://hcann1-imdb-api1.pages.dev/
 
 1. `npm run dev` to run locally
 2. Cloudflare pages allows this app to run (unlike GitHub pages).
